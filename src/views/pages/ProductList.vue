@@ -8,6 +8,7 @@
             <th scope="col">Name</th>
             <th scope="col">Price</th>
             <th scope="col">Quantity</th>
+            <th scope="col">Action</th>
           </tr>
         </thead>
         <tbody>
@@ -16,6 +17,11 @@
             <td>{{ product.name }}</td>
             <td>{{ product.price }}</td>
             <td>{{ product.quantity }}</td>
+            <td>
+                <router-link :to="`/product/edit/${product.id}`" class="btn btn-primary">Edit</router-link> &nbsp;
+                <button @click="ProductDelete(product.id)" class="btn btn-danger">Delete</button>
+
+            </td>
           </tr>
         </tbody>
       </table>
@@ -52,6 +58,24 @@
             console.error(error);
           });
       },
+
+      ProductDelete(productId)
+      {
+        axios
+          .delete(`${this.BASE_URL}/products/${productId}`)
+          .then(response => {
+            // Handle the successful response
+            console.log(response.data);
+            // Update the component's data with the fetched products
+
+            // this.fetchProducts();
+            this.products= response.data.products;
+          })
+          .catch(error => {
+            // Handle any errors
+            console.error(error);
+          });
+      }
     },
   };
   </script>
