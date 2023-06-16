@@ -29,15 +29,15 @@
   </template>
   
   <script>
+  // import { BASE_URL } from '@/config.js';
   import axios from 'axios';
-  
+
   export default {
     name: 'ProductList',
     data() {
       return {
         products: [],
-        // BASE_URL: 'http://127.0.0.1:8000/api',
-        BASE_URL: 'http://192.168.1.117:8000/api',
+        BASE_URL: window.config.BASE_URL,
       };
     },
     mounted() {
