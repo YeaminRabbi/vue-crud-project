@@ -26,6 +26,7 @@ const routes = [
     name: 'product-edit',
     component: ProductEdit
   },
+ 
   {
     path: '/about',
     name: 'about',

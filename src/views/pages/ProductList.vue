@@ -1,48 +1,16 @@
 <template>
-    <div class="container">
-      <h1 class="text-center">Product List</h1>
-      <table class="table">
-        <thead>
-          <tr>
-            <th scope="col">#</th>
-            <th scope="col">Name</th>
-            <th scope="col">Price</th>
-            <th scope="col">Quantity</th>
-            <th scope="col">Action</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr v-for="(product,index) in this.products" :key="product">
-            <td>{{ index+1 }}</td>
-            <td>{{ product.name }}</td>
-            <td>{{ product.price }}</td>
-            <td>{{ product.quantity }}</td>
-            <td>
-                <router-link :to="`/product/edit/${product.id}`" class="btn btn-primary">Edit</router-link> &nbsp;
-                <button @click="ProductDelete(product.id)" class="btn btn-danger">Delete</button>
-
-            </td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-  </template>
+  <ProductList />    
+</template>
   
   <script>
-  // import { BASE_URL } from '@/config.js';
-  import axios from 'axios';
+  import ProductList from '@/components/ProductList.vue';
 
   export default {
-    name: 'ProductList',
-    data() {
-      return {
-        products: [],
-        BASE_URL: window.config.BASE_URL,
-      };
+
+    components: {
+        ProductList,
     },
-    mounted() {
-      this.fetchProducts();
-    },
+   
     methods: {
       fetchProducts() {
         axios
