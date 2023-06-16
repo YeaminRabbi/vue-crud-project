@@ -19,8 +19,9 @@ export const useProductStore = defineStore('productStore', {
       
     async addProduct(product) {
         try {
-          const response = await axios.post(this.BASE_URL+'/products', product);
-          this.products.push(response.data.product);
+            const response = await axios.post(this.BASE_URL+'/products', product);
+            this.products.push(response.data.product);
+            console.log(response.data);
         } catch (error) {
           console.error(error);
         }
@@ -28,12 +29,15 @@ export const useProductStore = defineStore('productStore', {
 
     async deleteProduct(id) {
         try {
-          await axios.delete(this.BASE_URL+'/products/'+id);
-          this.products = this.products.filter(product => product.id !== id);
+            const response = await axios.delete(this.BASE_URL+'/products/'+id);
+            this.products = this.products.filter(product => product.id !== id);
+            console.log(response.data);
+            
         } catch (error) {
           console.error(error);
         }
-    },
+      }
+   
 
     //   async updateProduct(product) {
     //     try {

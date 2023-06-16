@@ -20,7 +20,7 @@
                     <td>{{ product.quantity }}</td> 
                     <td>
                         <router-link :to="`/product/edit/${product.id}`" class="btn btn-primary">Edit</router-link> &nbsp;
-                        <button @click="ProductDelete(product.id)" class="btn btn-danger">Delete</button>
+                        <button @click="deleteProduct(product.id)" class="btn btn-danger">Delete</button>
 
                     </td>
                 </tr>
@@ -43,9 +43,19 @@ export default defineComponent({
             productStore.products.data;
         });
 
+        const deleteProduct = async (productId) => {
+            await productStore.deleteProduct(productId);
+            // await productStore.fetchProducts();
+            // productStore.products.data;
+        };
+
+
         return {
             products: productStore.products,
+            deleteProduct,
         };
     },
+
+     
 });
 </script>
