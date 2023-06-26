@@ -72,7 +72,7 @@ export default {
     notificationDelay() {
       setTimeout(() => {
         this.notificationStatus = false;
-    }, 3000); // 3000 milliseconds = 3 seconds
+    }, 3000); 
     }
 
     
